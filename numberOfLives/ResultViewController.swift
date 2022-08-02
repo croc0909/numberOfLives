@@ -24,11 +24,17 @@ class ResultViewController: UIViewController {
     func updateUI() {
         //let number = calculateLifeNumber(date: birthday)
         //title = "\(number) \(lifeNumberNames[number])數"
-        let number = lifeNumber
-        print(number)
-        if let url = URL(string: "https://www.ifreesite.com/numerology/a\(number).html") {
-            let request = URLRequest(url: url)
-            webView.load(request)
+        if let number = lifeNumber
+        {
+            print(number)
+            if let url = URL(string: "https://www.ifreesite.com/numerology/a\(number).html") {
+                let request = URLRequest(url: url)
+                webView.load(request)
+            }
+        }
+        else
+        {
+            
         }
     }
     

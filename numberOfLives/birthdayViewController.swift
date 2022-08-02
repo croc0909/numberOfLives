@@ -56,7 +56,7 @@ class birthdayViewController: UIViewController {
   
     @IBSegueAction func lifeNumberSegueAction(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> ResultViewController? {
         let controller = ResultViewController(coder: coder)
-        controller?.lifeNumber = 1
+        controller?.lifeNumber = sum
         
         return controller
     }
@@ -70,8 +70,6 @@ class birthdayViewController: UIViewController {
         dateFormatter.dateFormat = "yMd"
         var dateString = dateFormatter.string(from: datePicker.date)
         
-        print(dateString)
-
         //repeat-while迴圈
         repeat{
             //每次repeat都由0開始，否則將進入無限迴圈
@@ -82,12 +80,10 @@ class birthdayViewController: UIViewController {
                 let number = Int(String(lifeNumber))!
                 sum = sum + number
             }
-            
             //得到的總和轉成字串，dateString函數=sum總和字串
             dateString = "\(sum)"
             //如果sum>9代表還沒完全計算完
         }while sum > 9
-        print(sum)
         
         //顯示生命靈數
         lifeNumberLabel.text = "\(sum)"
@@ -104,10 +100,6 @@ class birthdayViewController: UIViewController {
         let year = datecomponents.year!
         let month = datecomponents.month!
         let day = datecomponents.day!
-        
-        print(year)
-        print(month)
-        print(day)
         
         //設定星座日期區間＆顯示星座對應image
         if month == 1 && day >= 19 || month == 2 && day <= 19 {
